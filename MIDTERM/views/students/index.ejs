@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Students</title>
+</head>
+
+<body>
+    <h1>Students</h1>
+    <a href="/students/add" class="btn btn-primary">Add Student</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Student Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% students.forEach(student=> { %>
+                <tr>
+                    <td>
+                        <%= student.studentNumber %>
+                    </td>
+                    <td>
+                        <%= student.firstName %>
+                    </td>
+                    <td>
+                        <%= student.lastName %>
+                    </td <td>
+                    <%= student.emailAddress %>
+                        </td>
+                        <td>
+                            <a href="/students/<%= student._id %>/edit">Edit</a>
+                            <form method="POST" action="/students/<%= student._id %>?_method=DELETE">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+
+    <a href="/" class="btn btn-secondary">Back</a>
+</body>
+
+</html>
