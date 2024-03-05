@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "target": "es2021",              // Target modern JavaScript 
+      "module": "commonjs",            // Node.js-compatible module system
+      "outDir": "./dist",              // Output directory for compiled code
+      "rootDir": "./src",              // Source code location
+      "strict": true,                  // Enforce stricter type checking
+      "esModuleInterop": true,         // Improved interoperability with CommonJS modules
+      "skipLibCheck": true,            // Skip checking types in declaration files
+      "forceConsistentCasingInFileNames": true // Enforce consistent file name casing
+    }
+  }
