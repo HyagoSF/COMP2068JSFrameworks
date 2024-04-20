@@ -1,1 +1,53 @@
-<p>students works!</p>
+<div class="container">
+    <h1>Students</h1>
+
+    <button class="btn btn-primary mb-3" (click)="openCreateForm()">Create New Student</button>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>
+                    <button class="btn btn-warning me-2" (click)="openUpdateForm(student)">Update</button>
+                    <button class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal" id="studentFormModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ selectedStudent ? 'Update Student' : 'Create Student' }}</h5>
+                    <button type="button" class="btn-close" (click)="isFormOpen = false"></button>
+                </div>
+                <div class="modal-body">
+                    <form (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label for="studentId" class="form-label">ID</label>
+                            <input type="text" class="form-control" id="studentId" name="id"
+                                [ngModel]="selectedStudent?.id" [disabled]="true">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="studentName" class="form-label">Name</label>
+
+                            <input type="text" class="form-control" id="studentName" name="name"
+                                [ngModel]="selectedStudent?.name" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
